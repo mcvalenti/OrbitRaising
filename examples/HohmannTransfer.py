@@ -3,7 +3,8 @@ Created on 26 feb. 2022
 
 @author: ceci
 '''
-
+import sys
+sys.path.append('../')
 from Models.Propagation import Propagator
 from Models.Perturbations import central_body
 from Models.plots import plot_orbits
