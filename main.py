@@ -3,8 +3,8 @@ Created on 26 sep. 2021
 
 @author: ceci
 '''
-from Models.Propagation import Propagator
-from Models.Perturbations import central_body, j2
+from Models.Propagation1 import Propagator
+from Models.Perturbations import central_body, j2, thrust_force
 from Models.plots import plot_orbits
 import numpy as np
 
@@ -13,26 +13,17 @@ import numpy as np
 if __name__ == '__main__':
     
     """
-    Comentario de prueba
-    1- Instancia un satelite -- hacer clase (masa) --> method getOrbit()
-    2- Instancia una orbita
-    3- Propagador
-    """
-    
-    sat_SV=np.array([42164.0, 0.0, 0.0, 0.0, 3.07, 0.0])
-    sat_SV1=np.array([7164.0, 0.0, 0.0, 0.0, 7.5, 0.0])
 
+    """
+    perigee=480
+    apogee=800
+    sat_SV=np.array([42164.0, 0.0, 0.0, 0.0, 3.0, 0.0,1000])
+    p = Propagator(stateVector=sat_SV, step=5, mass=2000, thrust=0.01, isp=300) 
+    p.RK4(186000,[central_body, thrust_force])  
+    # for sv in p.get_svs():
+    #     print(sv)
+    p.plot()
     
-    p = Propagator(stateVector=sat_SV, step=100) 
-    p.RK4(44000,[central_body])   
-    
-    p1 = Propagator(stateVector=sat_SV1, step=100) 
-    p1.RK4(180000,[central_body, j2]) 
-    
-    for sv in p1.get_svs():
-        print (sv)
-        
-    plot_orbits([p1.get_svs()])
-    
+    print(p.get_svs()[0])
     print('Fin propagacion')
     

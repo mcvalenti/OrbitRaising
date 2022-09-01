@@ -59,7 +59,7 @@ class integrator(object):
     
     def AdamsBashford(self,x_pred, y_pred):
         """ Predictor and corrector method
-            y_init_vect: the previous values coputed with RK4
+            y_init_vect: the previous values computed with RK4
         """
         y_3=y_pred[3]
         yp_3=self.fderiv(x_pred[3],y_pred[3])
@@ -84,7 +84,7 @@ if __name__ == "__main__":
     x_pred=np.array([0,0.2,0.4,0.6])
     y_pred=np.array([1,1.0214, 1.06568, 1.10996])
     int1.AdamsBashford(x_pred, y_pred)
-    print ((0.8*0.8)/2+np.exp(0.8)-0.8)
+    print (np.exp(0.8)-0.8)
     
     
     

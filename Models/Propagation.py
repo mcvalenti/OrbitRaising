@@ -50,7 +50,7 @@ class Propagator(object):
         
         acc_vector=np.array([0,0,0])
         for f in perturb_funcs:
-            acc_vector=acc_vector+f(stateVector)
+            acc_vector=acc_vector+f(statevector=stateVector)
         
         result = np.array([ stateVector[3],
                             stateVector[4],
