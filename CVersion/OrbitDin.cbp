@@ -38,6 +38,8 @@
 		<Unit filename="include/DVector.h" />
 		<Unit filename="include/RK4.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="perturb.cpp" />
+		<Unit filename="perturb.h" />
 		<Unit filename="src/DVector.cpp" />
 		<Unit filename="src/RK4.cpp" />
 		<Extensions />
