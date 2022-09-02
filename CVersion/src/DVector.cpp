@@ -1,5 +1,4 @@
 #include "DVector.h"
-
 #include <string.h>
 #include <stdexcept>
 
@@ -8,7 +7,6 @@ DVector::DVector()
     this->vec = NULL;
     this->asize = 0;
     //ctor
-
 }
 
 DVector::DVector(double* vec, unsigned asize)
