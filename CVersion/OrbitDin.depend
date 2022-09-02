@@ -1,0 +1,66 @@
+# depslib dependency file v1.0
+1662066477 source:/media/psoligo/DB/git/Progra1110/Projects/OrbitDin/main.cpp
+	<iostream>
+	<list>
+	"atypes.h"
+	"DVector.h"
+	"perturb.h"
+	"RK4.h"
+
+1662065509 source:/media/psoligo/DB/git/Progra1110/Projects/OrbitDin/src/RK4.cpp
+	"RK4.h"
+	<string.h>
+
+1662065178 /media/psoligo/DB/git/Progra1110/Projects/OrbitDin/include/RK4.h
+	<list>
+	"../atypes.h"
+	"DVector.h"
+
+1662065937 /media/psoligo/DB/git/Progra1110/Projects/OrbitDin/atypes.h
+	"DVector.h"
+
+1662065070 source:/media/psoligo/DB/git/Progra1110/Projects/OrbitDin/src/DVector.cpp
+	"DVector.h"
+	<string.h>
+
+1662065772 /media/psoligo/DB/git/Progra1110/Projects/OrbitDin/include/DVector.h
+
+1662066175 source:/media/psoligo/DB/git/Progra1110/Projects/OrbitDin/perturb.cpp
+	"perturb.h"
+
+1662066168 /media/psoligo/DB/git/Progra1110/Projects/OrbitDin/perturb.h
+	"DVector.h"
+
+1662126948 source:d:\git\orbitraising-1\cversion\main.cpp
+	<iostream>
+	<list>
+	"atypes.h"
+	"DVector.h"
+	"perturb.h"
+	"RK4.h"
+
+1662125972 d:\git\orbitraising-1\cversion\atypes.h
+	"DVector.h"
+
+1662125972 d:\git\orbitraising-1\cversion\include\dvector.h
+
+1662125972 d:\git\orbitraising-1\cversion\perturb.h
+	"DVector.h"
+
+1662125972 d:\git\orbitraising-1\cversion\include\rk4.h
+	<list>
+	"../atypes.h"
+	"DVector.h"
+
+1662126979 source:d:\git\orbitraising-1\cversion\src\dvector.cpp
+	"DVector.h"
+	<string.h>
+	<stdexcept>
+
+1662125972 source:d:\git\orbitraising-1\cversion\src\rk4.cpp
+	"RK4.h"
+	<string.h>
+
+1662125972 source:d:\git\orbitraising-1\cversion\perturb.cpp
+	"perturb.h"
+
