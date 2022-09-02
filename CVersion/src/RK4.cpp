@@ -4,14 +4,18 @@
 #include <list>
 
 
-RK4::RK4(const DVector& stateVector, int step, double mass, int thrust, int isp)
+RK4::RK4(const DVector& stateVector, int step, double mass, double thrust, double isp)
 {
     this->stateVector  = stateVector;
-
     this->step = step;
     this->mass = mass;
     this->thrust = thrust;
     this->isp = isp;
+    this->arguments["step"] = to_string(step);
+    this->arguments["mass"] = to_string(mass);
+    this->arguments["thrust"] = to_string(thrust);
+    this->arguments["isp"] = to_string(isp);
+
     //ctor
 }
 
@@ -25,7 +29,7 @@ DVector RK4::__deriv(DVector& stateVector, std::list<fper>& perturb_funcs){
         //acc_vector=acc_vector+f(statevector=stateVector,thrust=self.thrust,isp=self.isp)
 
         //Para mejorar rendimiendo usamos vectores planos
-        accVector+=f(stateVector, this->thrust, this->isp);
+        accVector+=f(stateVector, this->arguments);
 
     }
     result[0] = stateVector[3];
@@ -69,18 +73,28 @@ void RK4::run(int time, std::list<fper>& funcs){
     }
 }
 
-int RK4::saveToStream(FILE* ostream){
+void RK4::consoleShow(){
     for(DVector& v:this->stateVectors){
-        fprintf(ostream, "%5.2lf "\
-                         "%5.2lf "\
-                         "%5.2lf \n",
+        cout<<v<<endl;;
 
-                        v[0],
-                        v[1],
-                        v[2]
-                        );
     }
+}
 
+int RK4::saveToStream(FILE* os){
+
+    //char op;
+    for(DVector& v:this->stateVectors){
+        fprintf(os, "%8.4f;%8.4f;%8.4f;%8.4f;%8.4f;%8.4f;%8.4f\n",
+                v[0],
+                v[1],
+                v[2],
+                v[3],
+                v[4],
+                v[5],
+                v[6]);
+
+    }
+    //scanf("%c", &op);
     return 1;
 
     /*

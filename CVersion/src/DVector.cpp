@@ -9,6 +9,10 @@ DVector::DVector()
     //ctor
 }
 
+double DVector::getValue(unsigned index){
+    return this->vec[index];
+}
+
 DVector::DVector(double* vec, unsigned asize)
 {
     this->vec = new double[asize];
@@ -21,6 +25,9 @@ DVector::DVector(unsigned asize)
 {
     this->vec = new double[asize];
     this->asize = asize;
+    for(unsigned i=0;i<asize;i++){
+        this->vec[i] = 0.0;
+    }
     //ctor
 
 }
@@ -80,6 +87,12 @@ double& DVector::operator[](unsigned index){
     return this->vec[index];
 }
 
+ostream& operator<<(ostream& os, const DVector& vec){
+    for(unsigned i=0;i<vec.asize;i++){
+        os<<vec.vec[i]<<"\t";
+    }
+    return os;
+}
 
 
 

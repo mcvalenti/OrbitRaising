@@ -31,7 +31,7 @@
 1662066168 /media/psoligo/DB/git/Progra1110/Projects/OrbitDin/perturb.h
 	"DVector.h"
 
-1662131126 source:d:\git\orbitraising-1\cversion\main.cpp
+1662142306 source:d:\git\orbitraising-1\cversion\main.cpp
 	<iostream>
 	<list>
 	"atypes.h"
@@ -39,31 +39,36 @@
 	"perturb.h"
 	"RK4.h"
 
-1662129625 d:\git\orbitraising-1\cversion\atypes.h
+1662143756 d:\git\orbitraising-1\cversion\atypes.h
+	<map>
 	"DVector.h"
 
-1662125972 d:\git\orbitraising-1\cversion\include\dvector.h
+1662141420 d:\git\orbitraising-1\cversion\include\dvector.h
+	<iostream>
 
-1662130105 d:\git\orbitraising-1\cversion\perturb.h
+1662143739 d:\git\orbitraising-1\cversion\perturb.h
+	<map>
 	"DVector.h"
 
-1662130684 d:\git\orbitraising-1\cversion\include\rk4.h
+1662144123 d:\git\orbitraising-1\cversion\include\rk4.h
 	<list>
 	"../atypes.h"
 	"DVector.h"
 	<stdio.h>
 
-1662127142 source:d:\git\orbitraising-1\cversion\src\dvector.cpp
+1662141665 source:d:\git\orbitraising-1\cversion\src\dvector.cpp
 	"DVector.h"
 	<string.h>
 	<stdexcept>
 
-1662131179 source:d:\git\orbitraising-1\cversion\src\rk4.cpp
+1662144070 source:d:\git\orbitraising-1\cversion\src\rk4.cpp
 	"RK4.h"
 	<string.h>
 	<list>
 
-1662130036 source:d:\git\orbitraising-1\cversion\perturb.cpp
+1662144223 source:d:\git\orbitraising-1\cversion\perturb.cpp
+	<stdarg.h>
 	"math.h"
 	"perturb.h"
+	<map>
 

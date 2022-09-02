@@ -1,9 +1,10 @@
+#include <stdarg.h>
 #include "math.h"
 #include "perturb.h"
-
+#include <map>
 #define CUAD(X) (X)*(X)
 
-DVector thrust_force(DVector& stateVector, double a, double b){
+DVector thrust_force(DVector& stateVector, std::map<string, string>& arguments){
 
     /*
     Computes thrust forces and mass consumption
@@ -12,12 +13,14 @@ DVector thrust_force(DVector& stateVector, double a, double b){
     output : acceleration vector for each components [km2/s] and
             mass consumption
     */
+
     DVector result(4);
-    double thrust   =   a;
-    double isp      =   b;
+    double thrust   =   std::stod(arguments["thrust"]);
+    double isp      =   std::stod(arguments["isp"]);
     const double g0 =   9.81; //# [km/s2]
     double v_mod;
     double coeff;
+
 
     v_mod=sqrt(CUAD(stateVector[3])+CUAD(stateVector[4])+CUAD(stateVector[5]));
 
@@ -33,7 +36,7 @@ DVector thrust_force(DVector& stateVector, double a, double b){
 }
 
 
-DVector central_body(DVector& stateVector, double a, double b){
+DVector central_body(DVector& stateVector, std::map<string, string>& arguments){
     /*
     """
     Computes gravity acelerations of central body force
