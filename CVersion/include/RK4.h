@@ -26,7 +26,7 @@ class RK4
     public:
         RK4(const DVector& stateVector, int step=1, double mass=200, double thrust=1000.0, double isp=300.0);
         DVector __deriv(DVector& stateVector, std::list<fper>& funcs);
-        void run(int time, std::list<fper>& perturb_funcs);
+        DVector run(int time, std::list<fper>& perturb_funcs);
         virtual ~RK4();
         int saveToStream(FILE* ostream);
         void consoleShow();

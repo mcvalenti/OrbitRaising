@@ -26,14 +26,19 @@ int main()
     double v[] = {6858,0,0,0,7.7102,0,2000};
     try{
         DVector stateVector(v, sizeof(v)/sizeof(v[0]));
-        RK4 rg(stateVector, 1, 2000, 1000, 300); // int step, double mass, int thrust, int isp
+        RK4 rg1(stateVector, 1, 2000, 1000, 300); // int step, double mass, int thrust, int isp
 
         lf.push_back(central_body);
+        stateVector = rg1.run(120*60, lf);
+
+
         lf.push_back(thrust_force);
-        rg.run(50, lf);
+        RK4 rg2(stateVector, 1, 2000, 1000, 300); // int step, double mass, int thrust, int isp
+
+        stateVector = rg2.run(260, lf);
 
         //rg.saveToStream(pf);
-        rg.saveToStream(stdout);
+
         //rg.consoleShow();
     }catch(exception& e){
         cout<<e.what()<<endl;

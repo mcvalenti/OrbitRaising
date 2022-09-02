@@ -45,7 +45,7 @@ DVector RK4::__deriv(DVector& stateVector, std::list<fper>& perturb_funcs){
 
 
 
-void RK4::run(int time, std::list<fper>& funcs){
+DVector RK4::run(int time, std::list<fper>& funcs){
     DVector yant, y0, k0, y1, k1, y2, k2, y3, k3, yfinal;
     int h = this->step;
     yant = this->stateVector;
@@ -71,6 +71,7 @@ void RK4::run(int time, std::list<fper>& funcs){
             //self.stateVectors.append(yfinal)
         yant = yfinal;
     }
+    return yfinal;
 }
 
 void RK4::consoleShow(){
@@ -84,7 +85,7 @@ int RK4::saveToStream(FILE* os){
 
     //char op;
     for(DVector& v:this->stateVectors){
-        fprintf(os, "%8.4f;%8.4f;%8.4f;%8.4f;%8.4f;%8.4f;%8.4f\n",
+        fprintf(os, "%8.4f\t%8.4f\t%8.4f\t%8.4f\t%8.4f\t%8.4f\t%8.4f\n",
                 v[0],
                 v[1],
                 v[2],
