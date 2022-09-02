@@ -20,12 +20,13 @@ int main()
     double v[] = {6858,0,0,0,7.7102,0,2000};
     try{
         DVector stateVector(v, sizeof(v)/sizeof(v[0]));
-        RK4 rg(stateVector, 1, 2000, 1000, 300);
+        RK4 rg(stateVector, 1, 2000, 1000, 300); // int step, double mass, int thrust, int isp
 
-        lf.push_back(perturvacionNula);
-        rg.run(5400, lf);
+        lf.push_back(central_body);
+        //lf.push_back(thrust_force);
+        rg.run(50, lf);
 
-
+        rg.saveToStream(stdout);
     }catch(exception& e){
         cout<<e.what()<<endl;
     }

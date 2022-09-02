@@ -2,7 +2,7 @@
 #define ATYPES_H_INCLUDED
 #include "DVector.h"
 
-typedef DVector(*fper)(DVector&,int, int);
+typedef DVector(*fper)(DVector&,double, double);
 
 
 #endif // ATYPES_H_INCLUDED

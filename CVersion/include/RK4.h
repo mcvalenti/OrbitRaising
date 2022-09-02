@@ -1,5 +1,7 @@
 #ifndef RK4_H
 #define RK4_H
+
+using namespace std;
 #include <list>
 #include "../atypes.h"
 
@@ -8,11 +10,13 @@
 #define MU              398600.448
 #define STATEVECTORSIZE 7
 
+#include <stdio.h>
 class RK4
 {
 
     private:
         DVector stateVector;
+
         std::list<DVector> stateVectors;
         int step;
         double mass;
@@ -24,7 +28,7 @@ class RK4
         DVector __deriv(DVector& stateVector, std::list<fper>& funcs);
         void run(int time, std::list<fper>& perturb_funcs);
         virtual ~RK4();
-
+        int saveToStream(FILE* ostream);
 
 };
 

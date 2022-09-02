@@ -1,7 +1,7 @@
 #include "RK4.h"
 
 #include <string.h>
-
+#include <list>
 
 
 RK4::RK4(const DVector& stateVector, int step, double mass, int thrust, int isp)
@@ -20,7 +20,7 @@ RK4::RK4(const DVector& stateVector, int step, double mass, int thrust, int isp)
 //Optimizar para evitar retornar copia!!!
 DVector RK4::__deriv(DVector& stateVector, std::list<fper>& perturb_funcs){
     DVector accVector(4);
-    DVector result;
+    DVector result(7);
     for(fper f:perturb_funcs){
         //acc_vector=acc_vector+f(statevector=stateVector,thrust=self.thrust,isp=self.isp)
 
@@ -28,7 +28,6 @@ DVector RK4::__deriv(DVector& stateVector, std::list<fper>& perturb_funcs){
         accVector+=f(stateVector, this->thrust, this->isp);
 
     }
-
     result[0] = stateVector[3];
     result[1] = stateVector[4];
     result[2] = stateVector[5];
@@ -67,11 +66,31 @@ void RK4::run(int time, std::list<fper>& funcs){
         this->stateVectors.push_back(yfinal);
             //self.stateVectors.append(yfinal)
         yant = yfinal;
+    }
+}
 
+int RK4::saveToStream(FILE* ostream){
+    for(DVector& v:this->stateVectors){
+        fprintf(ostream, "%5.2lf "\
+                         "%5.2lf "\
+                         "%5.2lf \n",
+
+                        v[0],
+                        v[1],
+                        v[2]
+                        );
     }
 
+    return 1;
 
+    /*
+    list<DVector>::iterator it;
+    for(it=this->stateVector.begin();it!=this->stateVector.end();it++){
+        fprintf(ostream, "%5.2lf;%5.2lf;%5.2lf" it[0],it[1],it[2]);
 
+    }
+    cout << "\n";
+    */
 }
 
 RK4::~RK4()
