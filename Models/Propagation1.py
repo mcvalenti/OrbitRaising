@@ -46,7 +46,7 @@ class Propagator(object):
 
                 
         ax = plt.axes(projection='3d')        
-        plt.title("Orbita Propagada RK4  - cuerpo central")
+        plt.title("Propagated orbit RK4  - central body")
         ax.plot3D(x, y, z, 'orange')
         plt.show()
         
@@ -77,8 +77,8 @@ class Propagator(object):
     def RK4(self, time,funcs):
         """
         RK4 
-        """
-        
+        Note: no dependence on time
+        """      
         yant= self.stateVector;
         for t in np.arange(0, time, self.h):
             
@@ -105,6 +105,32 @@ class Propagator(object):
     
     def last_sv(self):
         return self.stateVectors[-1]
+        
+    def RK4_matrix(self, time,funcs):
+        """
+        RK compact
+        s: stages of evaluation --> 4
+        Note: no dependence on time
+        """
+        s=4 # Stages for RK4
+        # Coefficients
+        b=np.array([[0,0,0],[1./2,0,0],[0,1./2,0],[0,0,1]])
+        c=np.array([1./6,1./3,1./3,1./6])
+        # init conditions
+        yant= self.stateVector
+        h=self.h      
+        for t in np.arange(0, time, h):
+            k=[]
+            phi=0
+            for i in range(0,s):
+                y_inner = yant
+                for j in range(0,i):
+                    y_inner = yant + h*b[i,i-1]*k[j];
+                k.append(self.__deriv(y_inner,funcs))
+                phi=phi+c[i]*k[i]
+            yfinal=yant+h*phi
+            self.stateVectors.append(yfinal)
+            yant = yfinal
 
 def r_v_Dtheta(r0,v0,Dtheta):
     """
@@ -142,19 +168,18 @@ def r_v_Dtheta(r0,v0,Dtheta):
 def xv2eo(r,v):
         """
         ---------------------------------------------
-        Trasformacion de vector de estado x,v
-        a elementos orbitales.
+        State Vector xv --> orbital element.
         ---------------------------------------------
         inputs:
-            x: posicion (vector) - [km]
-            v: velocidad (vector) - [km/s]
+            x: position (vector) - [km]
+            v: velocity (vector) - [km/s]
         outputs:
-            a: semieje mayor (float) - [km]
-            e: excentricidad (float)
-            i: inclinacion (float) - [rad]
-            Omega: Longitud del Nodo (float) - [rad]
-            w: Argumento del perigeo (float) - [rad]
-            nu: Anomalia verdadera (float) - [rad]
+            a: semi-major axis (float) - [km]
+            e: eccentricity (float)
+            i: inclination (float) - [rad]
+            Omega: Longitude of Ascending Node (float) - [rad]
+            w: Argument of perigee (float) - [rad]
+            nu: True Anomaly (float) - [rad]
         """
     #    Rt=6378.0 #[km]
         GM=398600.4405 #[km3/s2]
@@ -215,9 +240,6 @@ def xv2eo(r,v):
         else:
             nu=2*np.pi-np.arccos(np.dot(e_vect/e,r/rmod))
         
-        """
-        Impresion de salida
-        """
     #     print 'semieje mayor a= ',a
     #     print 'Excentricidad e= ',e
     #     print 'Inclinacion i= ',i*deg

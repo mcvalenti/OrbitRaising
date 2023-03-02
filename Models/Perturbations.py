@@ -7,9 +7,9 @@ import numpy as np
 
 def central_body(**kwargs):
     """ 
-    Computes gravity acelerations of central body force
+    Computes gravity accelerations of central body force
     input: stateVector [array]
-    output: aceleration vector for each components [km2/s]
+    output: acceleration vector for each components [km2/s]
     """
     stateVector=kwargs['statevector']
     mu=398600.448 # km3/s2
@@ -21,7 +21,7 @@ def central_body(**kwargs):
 def j2(**kwargs):
     """
     Computes J2 Earth Gravity potential term perturbations
-    output: aceleration vector for each components [km2/s]
+    output: acceleration vector for each components [km2/s]
     """
     stateVector=kwargs['statevector']
     mu=398600.448 # km3/s2

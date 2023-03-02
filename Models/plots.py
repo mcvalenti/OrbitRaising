@@ -27,6 +27,7 @@ def plot_orbits(stateVectors_list):
         ax.plot(x1, y1)
         
     plt.axis('equal')
+    plt.savefig('nonImpultisveTransfer.png')
     plt.show()
     
 def orbit(stateVectors):
